@@ -39,8 +39,8 @@ $childCert = Get-ChildItem -Path cert:\CurrentUser\My | ?{ $_.Subject -eq "CN=Co
 $type = [System.Security.Cryptography.X509Certificates.X509Certificate]::pfx
 $securePassword = ConvertTo-SecureString -String "MyPassword" -Force –AsPlainText
 
-Export-PfxCertificate -Cert $rootCert -FilePath "ContosoRootCertificate.pfx" -Password $securePassword -Verbose
-Export-PfxCertificate -Cert $childCert -FilePath "ContosoChildCertificate.pfx" -Password $securePassword -Verbose
+Export-PfxCertificate -Cert $rootCert[1] -FilePath "ContosoRootCertificate.pfx" -Password $securePassword -Verbose
+Export-PfxCertificate -Cert $childCert[1] -FilePath "ContosoChildCertificate.pfx" -Password $securePassword -Verbose
 ```
 Share these two files with the users who need VPN access, instructing them to install these files in their client machines (using Certmgr or other tools).
 
